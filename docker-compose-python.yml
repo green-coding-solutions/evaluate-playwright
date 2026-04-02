@@ -1,0 +1,18 @@
+services:
+  ngnix:
+    image: nginx:1.27-alpine
+    container_name: ngnix
+    volumes:
+      - ./site:/usr/share/nginx/html:ro
+
+  playwright-runner:
+    image: greencoding/gcb_playwright:v21
+    container_name: playwright-runner
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix # for debugging in non-headless mode
+    environment:
+       DISPLAY: ":0" # for debugging in non-headless mode
+    command: [ "tail", "-f", "/dev/null" ]   # keep container running
+    volumes:
+      - ./playwright:/tmp/playwright:ro
+      - /tmp/.X11-unix:/tmp/.X11-unix # for debugging in non-headless mode

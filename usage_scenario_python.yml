@@ -1,0 +1,15 @@
+name: Ngnix Local Root Node
+author: Arne Tarara
+description: Serve a local package from /tmp/repo via NGINX and access it with Playwright.
+
+compose-file: !include docker-compose-python.yml
+
+flow:
+  - name: Access local webserver and idle
+    container: playwright-runner
+    commands:
+      - type: console
+        command: HEADLESS=__GMT_VAR_HEADLESS__ python3 /tmp/repo/playwright/check-website.py
+        log-stdout: true
+        read-notes-stdout: true
+        shell: bash
