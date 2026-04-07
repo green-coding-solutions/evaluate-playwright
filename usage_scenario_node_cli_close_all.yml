@@ -41,7 +41,7 @@ flow:
         note: Sleep 5
 
 
-  - name: Close Browser 1
+  - name: Close Browser 2
     container: playwright-runner
     commands:
       - type: console
