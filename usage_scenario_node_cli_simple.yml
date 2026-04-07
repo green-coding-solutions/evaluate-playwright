@@ -5,18 +5,18 @@ description: Serve a local package from /tmp/repo via NGINX and access it with P
 compose-file: !include docker-compose-node.yml
 
 flow:
-  - name: Copy File
+  - name: Install
     container: playwright-runner
     hidden: true
     commands:
       - type: console
-        command: cp /tmp/repo/playwright/check-website.js /tmp
+        command: npm install -g @playwright/cli@latest playwright
 
   - name: Open Browser
     container: playwright-runner
     commands:
       - type: console
-        command: /tmp/node_modules/.bin/playwright-cli open --browser=firefox --headed
+        command: playwright-cli open --browser=firefox --headed
         log-stdout: true
         read-notes-stdout: true
 
@@ -24,7 +24,7 @@ flow:
     container: playwright-runner
     commands:
       - type: console
-        command: /tmp/node_modules/.bin/playwright-cli goto --browser=firefox http://nginx
+        command: playwright-cli goto --browser=firefox http://nginx
         log-stdout: true
         read-notes-stdout: true
         note: goto nginx
@@ -36,7 +36,7 @@ flow:
     container: playwright-runner
     commands:
       - type: console
-        command: /tmp/node_modules/.bin/playwright-cli goto --browser=firefox http://nginx
+        command: playwright-cli goto --browser=firefox http://nginx
         log-stdout: true
         read-notes-stdout: true
         note: goto nginx
@@ -48,7 +48,7 @@ flow:
     container: playwright-runner
     commands:
       - type: console
-        command: /tmp/node_modules/.bin/playwright-cli goto --browser=firefox http://nginx
+        command: playwright-cli goto --browser=firefox http://nginx
         log-stdout: true
         read-notes-stdout: true
         note: goto nginx
