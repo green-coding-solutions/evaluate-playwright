@@ -12,7 +12,7 @@ flow:
       - type: console
         command: npm install -g @playwright/cli@latest playwright
 
-  - name: Close Browser
+  - name: Close Browser 1
     container: playwright-runner
     commands:
       - type: console
@@ -20,7 +20,7 @@ flow:
         log-stdout: true
         read-notes-stdout: true
 
-  - name: Open Browser
+  - name: Open Browser 1
     container: playwright-runner
     commands:
       - type: console
@@ -41,7 +41,7 @@ flow:
         note: Sleep 5
 
 
-  - name: Close Browser
+  - name: Close Browser 1
     container: playwright-runner
     commands:
       - type: console
@@ -49,7 +49,7 @@ flow:
         log-stdout: true
         read-notes-stdout: true
 
-  - name: Open Browser
+  - name: Open Browser 2
     container: playwright-runner
     commands:
       - type: console
@@ -69,7 +69,7 @@ flow:
         command: sleep 5
         note: Sleep 5
 
-  - name: Close Browser
+  - name: Close Browser 3
     container: playwright-runner
     commands:
       - type: console
@@ -77,7 +77,7 @@ flow:
         log-stdout: true
         read-notes-stdout: true
 
-  - name: Open Browser
+  - name: Open Browser 3
     container: playwright-runner
     commands:
       - type: console
